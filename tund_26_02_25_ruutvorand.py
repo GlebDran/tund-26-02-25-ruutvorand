@@ -1,9 +1,26 @@
 from tkinter import *
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image, ImageTK
+from tkinter import messagebox
+
+
+def Lahenda():
+    pass
+def Graafik():
+    pass
 
 def aken():
     aken=Tk()
     aken.geometry("650x260")
+    aken.resizable(False, False)
     aken.title("Ruutvõrrand")
+    original_image=Image.open(r"image.jpg")
+    resized_image=original_image.resize("650x260")
+    bgimage=ImageTk.PhotoImage(resized_image)
+
+
     f1=Frame(aken, width=650, height=260)
     f1.pack()
     lbl=Label(f1, text="Ruutvõrrandite lahendamine",font="Calibri 26", fg="green", bg="lightblue")
@@ -25,7 +42,10 @@ def aken():
     y=Label(f1, text="0", font="Calibri 26", fg="green", padx=10)
     y.pack(side=LEFT)
 
-
+    btn_lahenda=Button(f1, text="Lahenda", font="calibri 26", fg="green", command=Lahenda)
+    btn_lahenda.pack(side=LEFT)
+    btn_graafik=Button(f1, text="Graafik", font="calibri 26", fg="green", command=Graafik)
+    btn_graafik.pack(side=LEFT)
 
     aken.mainloop()
 aken()
