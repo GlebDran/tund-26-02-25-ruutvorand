@@ -93,7 +93,7 @@ def aken():
     except Exception as e:
         print("Ошибка загрузки изображения:", e)
 
-    # Фрейм для элементов
+    # # Фрейм для элементов
     f1 = Frame(aken, width=800, height=260, bg="lightblue")
     f1.place(relx=0.5, rely=0.5, anchor=CENTER)
 
@@ -131,6 +131,60 @@ def aken():
     label5.pack(side=BOTTOM)
 
     aken.mainloop()
+def aken_grid():
+    global entryA, entryB, entryC, label5
 
+    aken = Tk()
+    aken.geometry("800x260")
+    aken.resizable(False, False)
+    aken.title("Ruutvõrrand")
+
+    # Загрузка изображения
+    try:
+        original_image = Image.open(r"image.jpg")
+        resized_image = original_image.resize((800, 260))
+        bgimage = ImageTk.PhotoImage(resized_image)
+        labelBG = Label(aken, image=bgimage)
+        labelBG.place(x=0, y=0)
+    except Exception as e:
+        print("Ошибка загрузки изображения:", e)
+
+    # Фрейм для элементов
+    f1 = Frame(aken, width=800, height=260, bg="lightblue")
+    f1.place(relx=0.5, rely=0.5, anchor=CENTER)
+
+    lbl = Label(f1, text="Ruutvõrrandite lahendamine", font="Calibri 26", fg="green", bg="lightblue")
+    lbl.grid(row=0, column=0, columnspan=7)
+
+    entryA = Entry(f1, font="Calibri 26", fg="green", bg="lightblue", width=3)
+    entryA.grid(row=2, column=0, columnspan=7)
+    entryA.bind("<FocusOut>", entryColor)
+
+    x2 = Label(f1, text="x²", font="Calibri 26", fg="green", padx=10)
+    x2.grid(row=1, column=0)
+
+    entryB = Entry(f1, font="Calibri 26", fg="green", bg="lightblue", width=3)
+    entryB.grid(row=1, column=1)
+    entryB.bind("<FocusOut>", entryColor)
+
+    x_plus = Label(f1, text="x+", font="Calibri 26", fg="green", padx=10)
+    x_plus.grid(row=1, column=2)
+
+    entryC = Entry(f1, font="Calibri 26", fg="green", bg="lightblue", width=3)
+    entryC.grid(row=1, column=3)
+    entryC.bind("<FocusOut>", entryColor)
+
+    y = Label(f1, text="= 0", font="Calibri 26", fg="green", padx=10)
+    y.grid(row=1, column=4)
+
+    btn_lahenda = Button(f1, text="Lahenda", font="calibri 20", fg="green", command=Solve)
+    btn_lahenda.grid(row=1, column=5)
+
+    btn_graafik = Button(f1, text="Graafik", font="calibri 20", fg="green", command=Graafik)
+    btn_graafik.grid(row=1, column=6)
+
+    label5 = Label(f1, text="", font="Calibri 16", fg="black", bg="lightblue")
+    label5.grid(row=1, column=7)
 
 aken()
+#aken_grid()
