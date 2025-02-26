@@ -24,6 +24,7 @@
     <Compile Include="tund_26_02_25_ruutvorand.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="beer money.ttf" />
     <Content Include="image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
