@@ -33,7 +33,7 @@ def entryColor(event):
 
 
 def aken():
-    global entryA, entryB, entryC  # Добавляем глобальные переменные
+    global entryA, entryB, entryC  # Добавляем глобальные переменные #
 
     aken = Tk()
     aken.geometry("650x260")
