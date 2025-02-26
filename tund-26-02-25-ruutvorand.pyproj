@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>75c25950-3bc5-4c7d-9536-7582de588765</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tund_26_02_25_ruutvorand.py</StartupFile>
+    <StartupFile>module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,11 +21,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tund_26_02_25_ruutvorand.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="beer money.ttf" />
+    <Content Include="email.jpg" />
     <Content Include="image.jpg" />
+    <Content Include="logo.ico" />
+    <Content Include="logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
