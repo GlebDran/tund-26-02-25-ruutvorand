@@ -72,7 +72,7 @@ root = tk.Tk()
 root.title("E-kirja saatmine")
 root.configure(bg="white")
 root.geometry("500x350")
-icon = PhotoImage(file="logo1.png")
+icon = PhotoImage(file="logo1.png") #иконка для программы
 root.iconphoto(True, icon)
 
 #цвета
