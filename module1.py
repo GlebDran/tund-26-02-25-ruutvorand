@@ -65,7 +65,7 @@ def puhasta():
     email_entry.delete(0, tk.END)
     subject_entry.delete(0, tk.END)
     attach_entry.delete(0, tk.END)
-    message_text.delete("1.0", tk.END)
+    message_text.delete("1.0", tk.END) #1 строка первый символ / очищает все содержимое
 
 # Гл окно
 root = tk.Tk()
