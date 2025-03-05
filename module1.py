@@ -1,11 +1,11 @@
-import smtplib
+import smtplib #для отправки почты
 import ssl
-import imghdr
+import imghdr 
 from email.message import EmailMessage
 import tkinter as tk
 from tkinter import Entry, Text, Button, Label, filedialog, messagebox, PhotoImage
 
-def vali_pilt():
+def vali_pilt(): #открывает окно выбора файла, записывает путь к файлу в поле ввода
     file = filedialog.askopenfilename()
     attach_entry.delete(0, tk.END)  # Очистить поле ввода
     attach_entry.insert(0, file)  # Вставить путь к файлу
@@ -13,29 +13,29 @@ def vali_pilt():
 def saada_kiri():
     kellele = email_entry.get()
     teema = subject_entry.get()
-    kiri = message_text.get("1.0", tk.END).strip()
+    kiri = message_text.get("1.0", tk.END).strip() #текст письма
     failitee = attach_entry.get()
-
+    #добавляем сервер / создаем ключ в гугл (пароль)
     smtp_server = "smtp.gmail.com"
     port = 587
     sender_email = "glebdranitsyn@gmail.com"
     password = "oeid ycrk uwit tnpk"
 
     if not kellele or not kiri:
-        messagebox.showerror("Viga", "Palun sisestage e-posti aadress ja kiri!")
+        messagebox.showerror("Viga", "Palun sisestage e-posti aadress ja kiri!") #msg box с ошибкой
         return
 
-    msg = EmailMessage()
+    msg = EmailMessage() #объект письма
     msg.set_content(kiri)
     msg['Subject'] = teema
     msg['From'] = sender_email
     msg['To'] = kellele
 
-    if failitee:
+    if failitee: #если файл указан
         try:
             with open(failitee, 'rb') as fpilt:
                 pilt = fpilt.read()
-            msg.add_attachment(pilt, maintype='image', subtype=imghdr.what(None, pilt))
+            msg.add_attachment(pilt, maintype='image', subtype=imghdr.what(None, pilt)) #определяет тип изображения
         except Exception as e:
             messagebox.showerror("Viga", f"Faili lisamine ebaõnnestus: {e}")
             return
@@ -73,7 +73,7 @@ for i, text in enumerate(labels):
 
 #поля ввода
 email_entry = Entry(root, width=40)
-email_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew")
+email_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew") #EW элемент по горизонтали, чтобы он занимал всю доступную ширину
 
 subject_entry = Entry(root, width=40)
 subject_entry.grid(row=1, column=1, padx=5, pady=5, sticky="ew")
@@ -81,7 +81,7 @@ subject_entry.grid(row=1, column=1, padx=5, pady=5, sticky="ew")
 attach_entry = Entry(root, width=40)
 attach_entry.grid(row=2, column=1, padx=5, pady=5, sticky="ew")
 
-message_text = Text(root, width=40, height=8)
+message_text = Text(root, width=40, height=8) #высота текстового ящика чтоб удобнее писать
 message_text.grid(row=3, column=1, padx=5, pady=5, sticky="ew")
 
 #кнопки
@@ -94,4 +94,4 @@ send_btn.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
 #размер колонок
 root.columnconfigure(1, weight=1)
 
-root.mainloop()
+root.mainloop() #запуск граф. интерфейса
