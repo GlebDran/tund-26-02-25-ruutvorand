@@ -51,6 +51,12 @@ def saada_kiri():
     except Exception as e:
         messagebox.showerror("Tekkis viga!", f"Viga: {e}")
 
+def puhasta():
+    email_entry.delete(0, tk.END)
+    subject_entry.delete(0, tk.END)
+    attach_entry.delete(0, tk.END)
+    message_text.delete("1.0", tk.END)
+
 # Гл окно
 root = tk.Tk()
 root.title("E-kirja saatmine")
@@ -69,7 +75,7 @@ btn_fg = "white"
 labels = ["EMAIL:", "TEEMA:", "LISA:", "KIRI:"]
 for i, text in enumerate(labels):
     label = Label(root, text=text, bg=bg_color, fg=fg_color, font=("Arial", 12, "bold"), width=10, anchor="w")
-    label.grid(row=i, column=0, padx=5, pady=5, sticky="nsew")
+    label.grid(row=i, column=0, padx=5, pady=5, sticky="nsew") #nsew растягивание во всех направлениях
 
 #поля ввода
 email_entry = Entry(root, width=40)
@@ -81,7 +87,7 @@ subject_entry.grid(row=1, column=1, padx=5, pady=5, sticky="ew")
 attach_entry = Entry(root, width=40)
 attach_entry.grid(row=2, column=1, padx=5, pady=5, sticky="ew")
 
-message_text = Text(root, width=40, height=8) #высота текстового ящика чтоб удобнее писать
+message_text = Text(root, width=40, height=8) #8 высота текстового ящика чтоб удобнее писать
 message_text.grid(row=3, column=1, padx=5, pady=5, sticky="ew")
 
 #кнопки
@@ -90,6 +96,9 @@ add_image_btn.grid(row=4, column=0, padx=5, pady=5, sticky="ew")
 
 send_btn = Button(root, text="SAADA", bg=btn_color, fg=btn_fg, font=("Arial", 12, "bold"), command=saada_kiri)
 send_btn.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
+
+clear_btn = Button(root, text="PUHASTA", bg="red", fg="white", font=("Arial", 12, "bold"), command=puhasta)
+clear_btn.grid(row=5, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
 
 #размер колонок
 root.columnconfigure(1, weight=1)
