@@ -52,6 +52,16 @@ def saada_kiri():
         messagebox.showerror("Tekkis viga!", f"Viga: {e}")
 
 def puhasta():
+    #пустые ли все поля
+    if (not email_entry.get() and 
+        not subject_entry.get() and 
+        not attach_entry.get() and 
+        not message_text.get("1.0", tk.END).strip()):
+        
+        messagebox.showerror("Viga", "Palun täita midagi!")
+        return  #вых из функции, чтобы не очищать уже пустые поля
+
+    #есть что удалять, очищаем поля
     email_entry.delete(0, tk.END)
     subject_entry.delete(0, tk.END)
     attach_entry.delete(0, tk.END)
